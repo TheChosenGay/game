@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwr367wbbct8"]
+
+[ext_resource type="Texture2D" uid="uid://cysi8artj8r72" path="res://assets/Objects/Basic_Plants.png" id="1_b3mlp"]
+[ext_resource type="PackedScene" uid="uid://bweer5qlqnlb5" path="res://scenes/hurtbox_component.tscn" id="2_84kpq"]
+[ext_resource type="PackedScene" uid="uid://bbiewk1eod006" path="res://scenes/health_component.tscn" id="3_bwltu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxgun"]
+size = Vector2(232.5, 165.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egwo8"]
+size = Vector2(225, 168)
+
+[node name="Plant" type="StaticBody2D"]
+
+[node name="BasicPlants" type="Sprite2D" parent="."]
+position = Vector2(-8, -44)
+scale = Vector2(14.3125, 11.5)
+texture = ExtResource("1_b3mlp")
+hframes = 6
+vframes = 2
+frame = 3
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_84kpq")]
+health = NodePath("HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+visible = false
+position = Vector2(2, -45)
+shape = SubResource("RectangleShape2D_sxgun")
+
+[node name="HealthComponent" parent="HurtboxComponent" node_paths=PackedStringArray("role") instance=ExtResource("3_bwltu")]
+role = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -40)
+shape = SubResource("RectangleShape2D_egwo8")

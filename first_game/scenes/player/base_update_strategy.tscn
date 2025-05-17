@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://p3m46qnuu8qa"]
+
+[ext_resource type="Script" path="res://scripts/resource/base_update_strategy.gd" id="1_y3u60"]
+
+[node name="Node2D" type="ResourcePreloader"]
+script = ExtResource("1_y3u60")

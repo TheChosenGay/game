@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh76b3pj45iqe"]
+
+[ext_resource type="PackedScene" uid="uid://dhsxnhccclwak" path="res://scenes/player/player.tscn" id="1_ayp6e"]
+[ext_resource type="PackedScene" uid="uid://cwr367wbbct8" path="res://scenes/plant.tscn" id="2_2yx8n"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ayp6e")]
+position = Vector2(608, 318)
+scale = Vector2(2, 2)
+
+[node name="Plant" parent="." instance=ExtResource("2_2yx8n")]
+position = Vector2(656, 325)
+scale = Vector2(0.1, 0.1)
