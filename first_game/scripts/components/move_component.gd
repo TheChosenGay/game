@@ -35,7 +35,6 @@ func move_with(command: Command, move_type: MoveType):
 func move(velocity: Vector2, move_type: MoveType):
 	self.move_type = move_type
 	self.velocity = velocity
-	
 	role.velocity = get_velocity_by_move_type()
 	role.move_and_slide()
 	

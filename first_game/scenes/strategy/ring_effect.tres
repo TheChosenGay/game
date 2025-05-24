@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RingVFXStrategy" load_steps=3 format=3 uid="uid://b8gx4ev16o1u4"]
+
+[ext_resource type="Script" path="res://ring_vfx.gd" id="1_6wudr"]
+[ext_resource type="Texture2D" uid="uid://dc62mdmmxf8ox" path="res://assets/Fruits Asset/07.png" id="2_hrygf"]
+
+[resource]
+script = ExtResource("1_6wudr")
+shader_path = ""
+texture = ExtResource("2_hrygf")
+label = "effect"

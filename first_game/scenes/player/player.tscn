@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://dhsxnhccclwak"]
+[gd_scene load_steps=24 format=3 uid="uid://dhsxnhccclwak"]
 
 [ext_resource type="Texture2D" uid="uid://sqxaeymd84lv" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="1_a41s7"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_yi6tp"]
 [ext_resource type="Texture2D" uid="uid://ci70gtosv1ebj" path="res://assets/Characters/Basic Charakter Actions.png" id="2_h4mfl"]
 [ext_resource type="PackedScene" uid="uid://lw5xx4cuuntl" path="res://scenes/player/move_component.tscn" id="3_wg8ak"]
 [ext_resource type="PackedScene" uid="uid://th8o8dnd8krf" path="res://scenes/player/animation_component.tscn" id="4_rvey0"]
 [ext_resource type="PackedScene" uid="uid://j2vi25wr5ud4" path="res://scenes/player/input.tscn" id="5_yqv2f"]
 [ext_resource type="PackedScene" uid="uid://qqpdytscm212" path="res://scenes/attack_component.tscn" id="6_khac8"]
 [ext_resource type="PackedScene" uid="uid://dsmbywmapomg8" path="res://scenes/hitbox_component.tscn" id="7_pts7v"]
+[ext_resource type="PackedScene" uid="uid://b2bx6y17w7amu" path="res://scenes/Health/health_bar.tscn" id="9_5ebv5"]
+[ext_resource type="PackedScene" uid="uid://bbiewk1eod006" path="res://scenes/health_component.tscn" id="10_qxie4"]
 
 [sub_resource type="Animation" id="Animation_dswjf"]
 length = 0.001
@@ -216,6 +219,47 @@ tracks/4/keys = {
 "values": [true, false, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_q6je4"]
+resource_name = "idle_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/AnimationAsset/BasicCharakterActions:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/AnimationAsset/BasicCharakterSpritesheet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation/AnimationAsset/BasicCharakterSpritesheet:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
 [sub_resource type="Animation" id="Animation_7qudv"]
 resource_name = "idle_right"
 length = 0.4
@@ -421,47 +465,6 @@ tracks/2/keys = {
 "values": [true, true]
 }
 
-[sub_resource type="Animation" id="Animation_q6je4"]
-resource_name = "idle_left"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/AnimationAsset/BasicCharakterActions:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/AnimationAsset/BasicCharakterSpritesheet:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/AnimationAsset/BasicCharakterSpritesheet:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [8, 9]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bcu48"]
 _data = {
 "attack_left": SubResource("Animation_gtjbg"),
@@ -481,6 +484,7 @@ size = Vector2(8, 10)
 size = Vector2(9, 15)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_yi6tp")
 
 [node name="Input" parent="." node_paths=PackedStringArray("move_component", "anim_component") instance=ExtResource("5_yqv2f")]
 move_component = NodePath("../MoveComponent")
@@ -533,5 +537,16 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_kyhyc")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("9_5ebv5")]
+offset_left = -25.0
+offset_top = -15.0
+offset_right = 131.0
+scale = Vector2(0.353575, 0.119987)
+health = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("role") instance=ExtResource("10_qxie4")]
+max_health = 600
+role = NodePath("..")
 
 [connection signal="body_entered" from="AttackComponent/HitboxComponent" to="AttackComponent/HitboxComponent" method="_on_body_entered"]

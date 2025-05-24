@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AttackUpdateStrategy" load_steps=3 format=3 uid="uid://bi08aoi602lt1"]
+
+[ext_resource type="Script" path="res://scripts/resource/strategy/AttackUpdateStrategy.gd" id="1_dprjt"]
+[ext_resource type="Texture2D" uid="uid://jujv4i7rw3p2" path="res://assets/Fruits Asset/01.png" id="2_rr8mo"]
+
+[resource]
+script = ExtResource("1_dprjt")
+damage = 20
+texture = ExtResource("2_rr8mo")
+label = "attack"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwr367wbbct8"]
+[gd_scene load_steps=7 format=3 uid="uid://cwr367wbbct8"]
 
 [ext_resource type="Texture2D" uid="uid://cysi8artj8r72" path="res://assets/Objects/Basic_Plants.png" id="1_b3mlp"]
 [ext_resource type="PackedScene" uid="uid://bweer5qlqnlb5" path="res://scenes/hurtbox_component.tscn" id="2_84kpq"]
 [ext_resource type="PackedScene" uid="uid://bbiewk1eod006" path="res://scenes/health_component.tscn" id="3_bwltu"]
+[ext_resource type="PackedScene" uid="uid://b2bx6y17w7amu" path="res://scenes/Health/health_bar.tscn" id="4_gcsyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxgun"]
 size = Vector2(232.5, 165.75)
@@ -34,3 +35,10 @@ role = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -40)
 shape = SubResource("RectangleShape2D_egwo8")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_gcsyq")]
+offset_left = -270.0
+offset_top = -226.0
+offset_right = 292.0
+offset_bottom = -164.0
+health = NodePath("../HurtboxComponent/HealthComponent")

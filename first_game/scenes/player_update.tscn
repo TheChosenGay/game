@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf5f5bndkygs5"]
+
+[ext_resource type="Script" path="res://scripts/resource/strategy/player_update.gd" id="1_ik2fa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7petm"]
+size = Vector2(12, 15)
+
+[node name="Update" type="Area2D"]
+script = ExtResource("1_ik2fa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -31.0
+offset_right = 23.0
+offset_bottom = -8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7petm")

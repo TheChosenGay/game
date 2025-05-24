@@ -1,14 +1,23 @@
+// 开发的时候自动录制
 # 游戏开发待办事项整理
 
-1. 行为树
+1. 行为树 AnimationTree
 2. 程序生成地图的方案
-3. 背包系统
-4. 角色拾取 : 完成，collisionShape要设置disabled，不要设置不可见
+3. 背包系统 Resource 的使用
+4. 角色拾取 
 5. 寻路系统： NavigationAgent
-6. 伤害系统：visible 和 disabled ,注意分层
+6. 伤害系统：visible 和 disabled ,注意分层, 完成，collisionShape要设置disabled，不要设置不可见
 7. strategy pattern：模块化升级 , Resource in Godot
 8. Resource 理解
 9. 制作漂亮的UI控件
+
+
++ strategry 模块化升级 1.
++ 不同武器的动画 + 升级 -- 动画取出来
++ 背包系统 2.
++ 录屏、剪辑、Manim
+    安装完录屏，剪辑和manim软件
++ 跨境的问题
 
 ## 在Hitbox中添加打击停顿
 func hit_stop():

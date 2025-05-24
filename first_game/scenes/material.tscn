@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxvg2a2n1p5eq"]
+
+[ext_resource type="Material" uid="uid://bfijaqavyccbb" path="res://shaders/material.tres" id="1_rcs5i"]
+[ext_resource type="Texture2D" uid="uid://sqxaeymd84lv" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="2_y3wyi"]
+
+[node name="Material" type="Sprite2D"]
+material = ExtResource("1_rcs5i")
+position = Vector2(35.5, 36)
+scale = Vector2(5.4375, 5.5)
+texture = ExtResource("2_y3wyi")

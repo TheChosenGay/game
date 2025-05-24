@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpeedUpdateStratey" load_steps=3 format=3 uid="uid://yqon5flgb7qd"]
+
+[ext_resource type="Script" path="res://scripts/resource/strategy/SpeedUpdateStrategy.gd" id="1_huknm"]
+[ext_resource type="Texture2D" uid="uid://cwnuopj8aqud1" path="res://assets/Fruits Asset/02.png" id="2_p4kke"]
+
+[resource]
+script = ExtResource("1_huknm")
+speed = 100
+texture = ExtResource("2_p4kke")
+label = "speed"

@@ -1,7 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh76b3pj45iqe"]
+[gd_scene load_steps=16 format=3 uid="uid://bh76b3pj45iqe"]
 
 [ext_resource type="PackedScene" uid="uid://dhsxnhccclwak" path="res://scenes/player/player.tscn" id="1_ayp6e"]
 [ext_resource type="PackedScene" uid="uid://cwr367wbbct8" path="res://scenes/plant.tscn" id="2_2yx8n"]
+[ext_resource type="PackedScene" uid="uid://bf5f5bndkygs5" path="res://scenes/player_update.tscn" id="3_lelw4"]
+[ext_resource type="Resource" uid="uid://yqon5flgb7qd" path="res://scenes/strategy/speed_strategy.tres" id="4_4a7xv"]
+[ext_resource type="Resource" uid="uid://bi08aoi602lt1" path="res://scenes/strategy/attack_update.tres" id="4_wa14h"]
+[ext_resource type="Script" path="res://ring_vfx.gd" id="5_kprb5"]
+[ext_resource type="Texture2D" uid="uid://dta8ejr8ao22j" path="res://assets/Fruits Asset/Black Outline/07.png" id="6_lqx22"]
+[ext_resource type="Material" uid="uid://bfijaqavyccbb" path="res://shaders/material.tres" id="8_dkkfq"]
+[ext_resource type="Texture2D" uid="uid://bvf6q2ektunff" path="res://assets/Fruits Asset/08.png" id="8_p6snn"]
+[ext_resource type="Material" uid="uid://p8dl2uk0fe40" path="res://shaders/rect_ring_vfx.tres" id="9_wdmib"]
+[ext_resource type="Material" uid="uid://tfwx00jbbtiv" path="res://shaders/pixel_explode.tres" id="11_v71hw"]
+[ext_resource type="Texture2D" uid="uid://de32fnfaarsdt" path="res://assets/Fruits Asset/10.png" id="12_wol0e"]
+
+[sub_resource type="Resource" id="Resource_baldn"]
+script = ExtResource("5_kprb5")
+shaderMaterial = ExtResource("8_dkkfq")
+texture = ExtResource("6_lqx22")
+label = "effect"
+
+[sub_resource type="Resource" id="Resource_vsjj7"]
+script = ExtResource("5_kprb5")
+shaderMaterial = ExtResource("9_wdmib")
+texture = ExtResource("8_p6snn")
+label = "vfx"
+
+[sub_resource type="Resource" id="Resource_sh7hu"]
+script = ExtResource("5_kprb5")
+shaderMaterial = ExtResource("11_v71hw")
+texture = ExtResource("12_wol0e")
+label = ""
 
 [node name="Game" type="Node2D"]
 
@@ -9,6 +37,29 @@
 position = Vector2(608, 318)
 scale = Vector2(2, 2)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
 [node name="Plant" parent="." instance=ExtResource("2_2yx8n")]
 position = Vector2(656, 325)
 scale = Vector2(0.1, 0.1)
+
+[node name="speed" parent="." instance=ExtResource("3_lelw4")]
+position = Vector2(570, 363)
+update_strategy = ExtResource("4_4a7xv")
+
+[node name="ring" parent="." instance=ExtResource("3_lelw4")]
+position = Vector2(629, 364)
+update_strategy = SubResource("Resource_baldn")
+
+[node name="attack" parent="." instance=ExtResource("3_lelw4")]
+position = Vector2(675, 365)
+update_strategy = ExtResource("4_wa14h")
+
+[node name="rect_ring" parent="." instance=ExtResource("3_lelw4")]
+position = Vector2(486, 314)
+update_strategy = SubResource("Resource_vsjj7")
+
+[node name="explode" parent="." instance=ExtResource("3_lelw4")]
+position = Vector2(703, 321)
+update_strategy = SubResource("Resource_sh7hu")
