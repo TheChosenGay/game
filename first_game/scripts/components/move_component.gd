@@ -2,6 +2,8 @@ extends Node2D
 
 class_name MoveComponent
 
+# 目前MoveComponent只支持四向移动
+
 @export var acceleration: Vector2 = Vector2.ZERO
 @export var speed: float = 100
 @export var jump_speed: float = 50

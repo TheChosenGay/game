@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhsxnhccclwak"]
+[gd_scene load_steps=25 format=3 uid="uid://dhsxnhccclwak"]
 
 [ext_resource type="Texture2D" uid="uid://sqxaeymd84lv" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="1_a41s7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_yi6tp"]
 [ext_resource type="Texture2D" uid="uid://ci70gtosv1ebj" path="res://assets/Characters/Basic Charakter Actions.png" id="2_h4mfl"]
 [ext_resource type="PackedScene" uid="uid://lw5xx4cuuntl" path="res://scenes/player/move_component.tscn" id="3_wg8ak"]
+[ext_resource type="Material" uid="uid://p8dl2uk0fe40" path="res://shaders/rect_ring_vfx.tres" id="4_5sdbd"]
 [ext_resource type="PackedScene" uid="uid://th8o8dnd8krf" path="res://scenes/player/animation_component.tscn" id="4_rvey0"]
 [ext_resource type="PackedScene" uid="uid://j2vi25wr5ud4" path="res://scenes/player/input.tscn" id="5_yqv2f"]
 [ext_resource type="PackedScene" uid="uid://qqpdytscm212" path="res://scenes/attack_component.tscn" id="6_khac8"]
@@ -94,6 +95,7 @@ _data = {
 [sub_resource type="Animation" id="Animation_gtjbg"]
 resource_name = "attack_left"
 length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -149,7 +151,7 @@ tracks/4/path = NodePath("AttackComponent/HitboxComponent/CollisionShape2D:disab
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.366667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, false, false, true]
@@ -158,6 +160,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_0dmmw"]
 resource_name = "attack_right"
 length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -213,7 +216,7 @@ tracks/4/path = NodePath("AttackComponent/HitboxComponent/CollisionShape2D:disab
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.366667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, false, false, true]
@@ -506,6 +509,7 @@ libraries = {
 
 [node name="BasicCharakterActions" type="Sprite2D" parent="Animation/AnimationAsset"]
 visible = false
+material = ExtResource("4_5sdbd")
 texture = ExtResource("2_h4mfl")
 hframes = 2
 vframes = 12

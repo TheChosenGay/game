@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c032cb1jbvbux"]
+
+[ext_resource type="Script" path="res://scripts/StateMachine/wandering.gd" id="1_gthdm"]
+
+[node name="WanderingState" type="Node2D"]
+script = ExtResource("1_gthdm")

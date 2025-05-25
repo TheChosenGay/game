@@ -1,14 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://p8dl2uk0fe40"]
-
-[ext_resource type="Shader" path="res://shaders/rect_ring_vfx.gdshader" id="1_lqg8e"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://p8dl2uk0fe40"]
 
 [resource]
 resource_local_to_scene = true
-shader = ExtResource("1_lqg8e")
-shader_parameter/hframes = 4
-shader_parameter/vframes = 4
-shader_parameter/color = Color(0, 0.8, 1, 1)
-shader_parameter/inner_radius = 0.004
-shader_parameter/outer_radius = 0.5
-shader_parameter/intensity = 1.0
-shader_parameter/pulse_speed = 1.0

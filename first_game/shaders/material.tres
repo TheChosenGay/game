@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_mk5ta")
 shader_parameter/sensitivity = 1.0
-shader_parameter/edge_color = Color(0, 1, 1, 1)
+shader_parameter/edge_color = Color(0.383284, 0.482423, 0.220591, 1)

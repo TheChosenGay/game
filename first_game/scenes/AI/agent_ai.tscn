@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhemd1kngscnh"]
+
+[ext_resource type="Script" path="res://scripts/AI/agent_ai.gd" id="1_sxbto"]
+
+[node name="AgentAI" type="Node2D"]
+script = ExtResource("1_sxbto")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 100)
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-100, 0)
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+target_position = Vector2(0, -100)
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collide_with_areas = true
