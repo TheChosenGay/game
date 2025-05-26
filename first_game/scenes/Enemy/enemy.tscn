@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dki7m2rxq1yss"]
+[gd_scene load_steps=20 format=3 uid="uid://dki7m2rxq1yss"]
 
 [ext_resource type="PackedScene" uid="uid://lw5xx4cuuntl" path="res://scenes/player/move_component.tscn" id="1_20w8o"]
 [ext_resource type="PackedScene" uid="uid://pxngjt4e5cwq" path="res://scenes/StateMachine/state_machine.tscn" id="2_t7g3g"]
 [ext_resource type="PackedScene" uid="uid://th8o8dnd8krf" path="res://scenes/player/animation_component.tscn" id="3_f54jm"]
 [ext_resource type="PackedScene" uid="uid://c032cb1jbvbux" path="res://scenes/StateMachine/wandering_state.tscn" id="3_jgv8u"]
 [ext_resource type="Texture2D" uid="uid://b64g0jmjjnjne" path="res://assets/Enemy/3 walk.png" id="4_bmov8"]
+[ext_resource type="Script" path="res://scripts/Enemy/enemy_animation.gd" id="5_n1rd2"]
 [ext_resource type="PackedScene" uid="uid://bbiewk1eod006" path="res://scenes/health_component.tscn" id="6_pil8h"]
 [ext_resource type="PackedScene" uid="uid://b2bx6y17w7amu" path="res://scenes/Health/health_bar.tscn" id="7_n3q32"]
 [ext_resource type="PackedScene" uid="uid://bweer5qlqnlb5" path="res://scenes/hurtbox_component.tscn" id="8_bc21k"]
@@ -229,6 +230,7 @@ agent_ai = NodePath("../AgentAI")
 [node name="AgentAI" parent="StateMachine" instance=ExtResource("9_27nde")]
 
 [node name="Animation" type="Node2D" parent="."]
+script = ExtResource("5_n1rd2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
 libraries = {
@@ -251,6 +253,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_u2t5w")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("role") instance=ExtResource("6_pil8h")]
+max_health = 1000
 role = NodePath("..")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("7_n3q32")]
@@ -274,3 +277,5 @@ offset_top = -16.0
 offset_right = 28.0
 offset_bottom = 11.0
 max_value = 3.0
+
+[connection signal="health_changed" from="HealthComponent" to="Animation" method="_on_health_component_health_changed"]
