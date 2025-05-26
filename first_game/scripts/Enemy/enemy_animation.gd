@@ -16,7 +16,7 @@ func _on_health_component_health_changed(health_ratio: float) -> void:
 func set_timer():
 	timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 10
+	timer.wait_time = 1
 	timer.one_shot = true
 	timer.timeout.connect(on_time_out)
 	timer.start()
