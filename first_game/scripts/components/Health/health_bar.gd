@@ -9,6 +9,6 @@ func _ready() -> void:
 	health.connect("health_changed", _on_health_changed)
 	
 	
-func _on_health_changed(health_ratio: float) -> void:
+func _on_health_changed(attacker_position: Vector2, health_ratio: float) -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "value", health_ratio, 0.1)

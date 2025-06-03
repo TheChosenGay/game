@@ -11,4 +11,5 @@ func create_attack_context():
 	var attack_context = AttackContext.new()
 	attack_context.damage = damage
 	attack_context.is_fall_back = false
+	attack_context.attacker_position = self.global_position
 	return attack_context

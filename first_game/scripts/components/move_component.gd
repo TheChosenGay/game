@@ -33,6 +33,8 @@ func move_with(command: Command, move_type: MoveType):
 			move(Vector2.ZERO,move_type)
 		global.RoleState.Jump:
 			move(Vector2.UP * jump_speed, move_type)
+		global.RoleState.Freeze:
+			move(command.force_direction * speed*2, move_type)
 
 func move(velocity: Vector2, move_type: MoveType):
 	self.move_type = move_type

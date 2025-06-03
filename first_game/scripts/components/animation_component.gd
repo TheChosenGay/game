@@ -6,6 +6,9 @@ class_name AnimationComponent
 @export var animation_folder: String
 	
 func animate(command: Command):
+	if command.state == global.RoleState.Freeze:
+		animation_player.stop()
+		return
 	var animation_name = animation_folder + "/" + get_animation_name_with(command)
 	# print("animation_name = ", animation_name)
 	if animation_player.has_animation(animation_name):

@@ -1,8 +1,6 @@
 extends State
 class_name WanderingState
 
-@export var move_component: MoveComponent
-@export var anim_component: AnimationComponent
 @export var agent_ai: AgentAI
 @export var next_state: State
 @export var cool_down: float = 3
@@ -35,10 +33,8 @@ func update(delta: float) ->void:
 	else:
 		command = current_command
 	$"../../ProgressBar".value += delta
-	if move_component:
-		move_component.linear_move_with(command)
-	if anim_component:
-		anim_component.animate(command)
+	if state_machine:
+		state_machine.post_process(command)
 	
 func physical_update(delta: float) ->void:
 	pass

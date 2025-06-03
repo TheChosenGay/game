@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://dki7m2rxq1yss"]
+[gd_scene load_steps=21 format=3 uid="uid://dki7m2rxq1yss"]
 
 [ext_resource type="PackedScene" uid="uid://lw5xx4cuuntl" path="res://scenes/player/move_component.tscn" id="1_20w8o"]
 [ext_resource type="PackedScene" uid="uid://pxngjt4e5cwq" path="res://scenes/StateMachine/state_machine.tscn" id="2_t7g3g"]
 [ext_resource type="PackedScene" uid="uid://th8o8dnd8krf" path="res://scenes/player/animation_component.tscn" id="3_f54jm"]
 [ext_resource type="PackedScene" uid="uid://c032cb1jbvbux" path="res://scenes/StateMachine/wandering_state.tscn" id="3_jgv8u"]
 [ext_resource type="Texture2D" uid="uid://b64g0jmjjnjne" path="res://assets/Enemy/3 walk.png" id="4_bmov8"]
+[ext_resource type="PackedScene" uid="uid://dx227wx2yt1ly" path="res://scenes/StateMachine/hurt_state.tscn" id="5_lv06o"]
 [ext_resource type="Script" path="res://scripts/Enemy/enemy_animation.gd" id="5_n1rd2"]
 [ext_resource type="PackedScene" uid="uid://bbiewk1eod006" path="res://scenes/health_component.tscn" id="6_pil8h"]
 [ext_resource type="PackedScene" uid="uid://b2bx6y17w7amu" path="res://scenes/Health/health_bar.tscn" id="7_n3q32"]
@@ -219,15 +220,22 @@ size = Vector2(16, 17)
 speed = 10.0
 role = NodePath("..")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("current_state") instance=ExtResource("2_t7g3g")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("current_state", "move_component", "anim_component") instance=ExtResource("2_t7g3g")]
 current_state = NodePath("WanderingState")
+move_component = NodePath("../MoveComponent")
+anim_component = NodePath("../Animation/AnimationComponent")
 
-[node name="WanderingState" parent="StateMachine" node_paths=PackedStringArray("move_component", "anim_component", "agent_ai") instance=ExtResource("3_jgv8u")]
-move_component = NodePath("../../MoveComponent")
-anim_component = NodePath("../../Animation/AnimationComponent")
+[node name="WanderingState" parent="StateMachine" node_paths=PackedStringArray("agent_ai", "state_machine") instance=ExtResource("3_jgv8u")]
 agent_ai = NodePath("../AgentAI")
+state_machine = NodePath("..")
 
 [node name="AgentAI" parent="StateMachine" instance=ExtResource("9_27nde")]
+
+[node name="HurtState" parent="StateMachine" node_paths=PackedStringArray("health_comp", "state_machine") instance=ExtResource("5_lv06o")]
+health_comp = NodePath("../../HealthComponent")
+duration = 0.2
+state_name = "HurtState"
+state_machine = NodePath("..")
 
 [node name="Animation" type="Node2D" parent="."]
 script = ExtResource("5_n1rd2")

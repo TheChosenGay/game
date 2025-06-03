@@ -4,7 +4,7 @@ extends Node2D
 @onready var move_component: MoveComponent = $"../MoveComponent"
 
 var timer: Timer
-func _on_health_component_health_changed(health_ratio: float) -> void:
+func _on_health_component_health_changed(attacker_position: Vector2, health_ratio: float) -> void:
 	set_timer()
 	animation_player.stop()
 	for child in get_children():
@@ -16,7 +16,7 @@ func _on_health_component_health_changed(health_ratio: float) -> void:
 func set_timer():
 	timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 1
+	timer.wait_time = 0.2
 	timer.one_shot = true
 	timer.timeout.connect(on_time_out)
 	timer.start()

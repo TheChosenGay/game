@@ -9,12 +9,12 @@ func _ready() -> void:
 	
 func get_attack(attack: AttackContext):
 	health -= attack.damage
-	health_changed.emit(health / float(max_health))
+	health_changed.emit(attack.attacker_position, health / float(max_health))
 	if health <= 0:
 		died.emit()
 		role.queue_free()
 		
 
 
-signal health_changed(health_ratio: float)
+signal health_changed(attacer_position:Vector2, health_ratio: float)
 signal died

@@ -5,13 +5,15 @@ enum RoleState {
 	Run,
 	Attack,
 	Jump,
+	Freeze,
 }
 
 enum FaceDirection {
 	Left,
 	Right,
 	Down,
-	Up
+	Up,
+	force_move, #强制位移
 }
 
 func get_vector_from(face_direction: FaceDirection) ->Vector2:
