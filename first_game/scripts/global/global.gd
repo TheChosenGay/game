@@ -16,6 +16,32 @@ enum FaceDirection {
 	force_move, #强制位移
 }
 
+enum ItemType {
+	# 玩家
+	Player,
+	# Enemy
+	Enemy,
+	# 除了上述外，所有可被检测到的东西
+	Item,
+}
+
+enum RelationshipType {
+	Hostile, # 敌对
+	Friendly, # 友好
+	Neutral # 中立
+}
+
+func get_item_type_name(type: ItemType) -> String:
+	match type:
+		ItemType.Player:
+			return "Player"
+		ItemType.Enemy:
+			return "Enemy"
+		_:
+			return "Item"
+	
+
+
 func get_vector_from(face_direction: FaceDirection) ->Vector2:
 	match face_direction:
 		FaceDirection.Left:

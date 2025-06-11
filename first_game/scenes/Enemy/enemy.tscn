@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://dki7m2rxq1yss"]
+[gd_scene load_steps=22 format=3 uid="uid://dki7m2rxq1yss"]
 
 [ext_resource type="PackedScene" uid="uid://lw5xx4cuuntl" path="res://scenes/player/move_component.tscn" id="1_20w8o"]
+[ext_resource type="Script" path="res://scripts/Enemy/enemy.gd" id="1_t3nh5"]
 [ext_resource type="PackedScene" uid="uid://pxngjt4e5cwq" path="res://scenes/StateMachine/state_machine.tscn" id="2_t7g3g"]
 [ext_resource type="PackedScene" uid="uid://th8o8dnd8krf" path="res://scenes/player/animation_component.tscn" id="3_f54jm"]
 [ext_resource type="PackedScene" uid="uid://c032cb1jbvbux" path="res://scenes/StateMachine/wandering_state.tscn" id="3_jgv8u"]
@@ -215,6 +216,7 @@ size = Vector2(14, 15)
 size = Vector2(16, 17)
 
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_t3nh5")
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("role") instance=ExtResource("1_20w8o")]
 speed = 10.0
